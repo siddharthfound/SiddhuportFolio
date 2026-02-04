@@ -56,7 +56,9 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.skill-category, .timeline-item, .stat, .contact-item');
+    const animateElements = document.querySelectorAll(
+        '.skill-category, .timeline-item, .stat, .contact-item, .finding-card, .process-step'
+    );
     
     if (prefersReducedMotion) {
         animateElements.forEach(el => {
