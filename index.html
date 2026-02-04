@@ -16,6 +16,8 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#findings">Findings</a></li>
+                <li><a href="#process">Process</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -32,7 +34,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Siddharth</h1>
-                    <h2>Web3 Security Researcher & Smart Contract Auditor</h2>
+                    <h2>Smart Contract Security Researcher | DeFi Auditing & Exploit Development</h2>
                     <p>Hands-on auditing, adversarial testing, and real-world bug bounty impact across DeFi and smart contract systems.</p>
                     <div class="hero-highlights">
                         <span class="pill"><i class="fas fa-trophy"></i> #211 HackerProof</span>
@@ -41,7 +43,7 @@
                     </div>
                     <div class="hero-buttons">
                         <a href="#contact" class="btn-primary">Get In Touch</a>
-                        <a href="#experience" class="btn-secondary">View Work</a>
+                        <a href="#findings" class="btn-secondary">View Findings</a>
                     </div>
                 </div>
                 <div class="hero-visual" aria-hidden="true">
@@ -128,6 +130,122 @@
         </div>
     </section>
 
+    <section id="findings" class="findings">
+        <div class="container">
+            <h2>Selected Findings</h2>
+            <p class="section-lede">Case studies are generalized to respect responsible disclosure. Full technical details and private reports are available upon request.</p>
+            <div class="findings-grid">
+                <article class="finding-card">
+                    <header class="finding-header">
+                        <div class="finding-heading">
+                            <h3>ERC-4626 Vault Price Inflation</h3>
+                            <p class="finding-subtitle">Immunefi • Validated & paid</p>
+                        </div>
+                        <span class="severity severity-critical">Critical</span>
+                    </header>
+                    <ul class="finding-points">
+                        <li><strong>Context:</strong> ERC-4626 vault share/asset accounting.</li>
+                        <li><strong>Issue:</strong> Price inflation vector via edge-case rounding/accounting behavior.</li>
+                        <li><strong>Impact:</strong> Unfair share mint/redeem leading to potential loss for users.</li>
+                        <li><strong>Fix:</strong> Added guardrails, rounding protections, and invariant checks.</li>
+                        <li><strong>Disclosure:</strong> Private report (public summary on request).</li>
+                    </ul>
+                    <div class="tag-row">
+                        <span class="tag">ERC-4626</span>
+                        <span class="tag">Vaults</span>
+                        <span class="tag">Accounting</span>
+                        <span class="tag">Rounding</span>
+                    </div>
+                </article>
+
+                <article class="finding-card">
+                    <header class="finding-header">
+                        <div class="finding-heading">
+                            <h3>Tick-Price Reversion in Trading Path</h3>
+                            <p class="finding-subtitle">Cantina • Validated & paid</p>
+                        </div>
+                        <span class="severity severity-high">High</span>
+                    </header>
+                    <ul class="finding-points">
+                        <li><strong>Context:</strong> On-chain trading logic using tick-based pricing.</li>
+                        <li><strong>Issue:</strong> Tick-price update reverted under edge-case precision/bounds conditions.</li>
+                        <li><strong>Impact:</strong> Trades could revert (availability/DoS risk) and break expected execution paths.</li>
+                        <li><strong>Fix:</strong> Normalized precision, added bounds checks, and regression tests for edge cases.</li>
+                        <li><strong>Disclosure:</strong> Private report (details on request).</li>
+                    </ul>
+                    <div class="tag-row">
+                        <span class="tag">AMMs</span>
+                        <span class="tag">Tick Math</span>
+                        <span class="tag">Precision</span>
+                        <span class="tag">DoS</span>
+                    </div>
+                </article>
+
+                <article class="finding-card">
+                    <header class="finding-header">
+                        <div class="finding-heading">
+                            <h3>Additional Paid Bug Bounty Findings</h3>
+                            <p class="finding-subtitle">HackerProof & other platforms</p>
+                        </div>
+                        <span class="severity severity-multi">Paid</span>
+                    </header>
+                    <ul class="finding-points">
+                        <li><strong>Access control bypass</strong> (Critical)</li>
+                        <li><strong>Timestamp/time manipulation</strong> affecting protocol behavior (High)</li>
+                        <li><strong>DoS vectors</strong> via revert paths / edge-case inputs (Medium)</li>
+                        <li><strong>Improper input validation</strong> and missing constraints</li>
+                        <li><strong>Track record:</strong> Paid findings: 1× Critical, 1× High, 1× Medium</li>
+                    </ul>
+                    <div class="tag-row">
+                        <span class="tag">Access Control</span>
+                        <span class="tag">Time</span>
+                        <span class="tag">DoS</span>
+                        <span class="tag">Validation</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process">
+        <div class="container">
+            <h2>How I Approach an Audit</h2>
+            <p class="section-lede">A repeatable workflow focused on invariants, exploitability, and high-signal reporting.</p>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-icon"><i class="fas fa-sitemap"></i></div>
+                    <h3>Threat Model</h3>
+                    <p>Map trust assumptions, roles, and external dependencies (oracles, DEXes, bridges).</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon"><i class="fas fa-check-circle"></i></div>
+                    <h3>Define Invariants</h3>
+                    <p>Formalize what must always hold: solvency, accounting conservation, and access boundaries.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon"><i class="fas fa-search"></i></div>
+                    <h3>Manual Review First</h3>
+                    <p>Audit core state transitions line-by-line before relying on automation.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Tooling & Testing</h3>
+                    <p>Use Slither + Foundry fuzzing/invariants to pressure-test edge cases and economic paths.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon"><i class="fas fa-bug"></i></div>
+                    <h3>Exploit & Validate Fixes</h3>
+                    <p>Build PoCs where needed and verify mitigations with regression tests.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Clear Reporting</h3>
+                    <p>Communicate impact, reproduction steps, and concrete fixes with severity justification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="experience" class="experience">
         <div class="container">
             <h2>Experience & Achievements</h2>
@@ -206,7 +324,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Siddharth. Web3 Security Researcher & Smart Contract Auditor.</p>
+            <p>&copy; 2024 Siddharth. Web3 Security Researcher & Smart Contract Auditor.</p>
         </div>
     </footer>
 
